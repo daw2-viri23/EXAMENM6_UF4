@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalContext';
 
 const TablaResueltos = () => {
-  const { dades } = useContext(GlobalContext);
-  const { ticketsResueltos } = dades;
+  const { array } = useContext(GlobalContext);
+  const { ticketsResueltos } = array;
 
   return (
     <table className="table mt-4">
