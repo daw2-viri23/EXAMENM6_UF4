@@ -4,7 +4,7 @@ import Header from './componentes/Header';
 import { GlobalProvider } from './context/GlobalContext';
 import Home from './vistas/Registro';
 import Login from './vistas/Login';
-import Tabla from './vistas/Tabla';
+import Tabla from './componentes/Tabla';
 import Footer from './componentes/Footer';
 
 const App = () => {

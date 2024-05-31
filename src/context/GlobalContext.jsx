@@ -1,19 +1,20 @@
 import React, { createContext, useState, useEffect } from 'react';
-import db from '../db/db.json';
+import bd from '../db/db.json';
 
 const GlobalContext = createContext();
 
 const GlobalProvider = ({ children }) => {
-  const [ticketsPendientes, setTicketsPendientes] = useState([]);
-  const [ticketsResueltos, setTicketsResueltos] = useState([]);
+  const [dades, setDades] = useState({
+    ticketsPendientes: [],
+    ticketsResueltos: []
+  });
 
   useEffect(() => {
-    setTicketsPendientes(db.ticketsPendientes);
-    setTicketsResueltos(db.ticketsResueltos);
+    setDades(bd);
   }, []);
 
   return (
-    <GlobalContext.Provider value={{ ticketsPendientes, ticketsResueltos }}>
+    <GlobalContext.Provider value={{ dades }}>
       {children}
     </GlobalContext.Provider>
   );
