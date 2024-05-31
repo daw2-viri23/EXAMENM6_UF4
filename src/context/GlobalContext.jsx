@@ -41,7 +41,6 @@ export const GlobalProvider = ({ children }) => {
         // si algo fala con el catch mostramos por consola que ha sucedido un error.
       }
     };
-
     funcionFetch();
     // Llamamos a la funcion funcionFetch para entregar los datos
   }, []);
