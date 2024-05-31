@@ -9,7 +9,7 @@ export const GlobalContext = createContext();
 export const GlobalProvider = ({ children }) => {
   // GlobalProvider da los datos a los componentes "hijo"
 
-  const [dades, setDades] = useState({
+  const [array, setDades] = useState({
     ticketsPendientes: [],
     ticketsResueltos: []
   });
@@ -18,25 +18,25 @@ export const GlobalProvider = ({ children }) => {
   useEffect(() => {
 
     
-    const fetchData = async () => {
-      // Definimos una función fetchData que obtendrá datos desde internet.
+    const funcionFetch = async () => {
+      // Definimos una función funcionFetch que obtendrá datos desde internet.
       
       try {
-        const guardaTicketsPendientes = await fetch('https://json-server-vercel-examenm6.vercel.app/ticketsPendientes');
+        const EnlaceApi1 = await fetch('https://json-server-vercel-examenm6.vercel.app/ticketsPendientes');
         // fetch es una función que obtiene datos desde una URL de la api rest subida al vercel previamente, usamos un await para esperar a q se reciban los datos para continuar
 
         
-        const pendientes = await guardaTicketsPendientes.json();
-        // convertimos el guardaTicketsPendientes en un objeto de JS igual se hace con guardaTicketsResueltos
+        const guardaTicketspendientes = await EnlaceApi1.json();
+        // convertimos el EnlaceApi1 en un objeto de JS igual se hace con guardaTicketsResueltos
 
-        const guardaTicketsResueltos = await fetch('https://json-server-vercel-examenm6.vercel.app/ticketsResueltos');
+        const EnlaceApi2 = await fetch('https://json-server-vercel-examenm6.vercel.app/ticketsResueltos');
 
         
-        const resueltos = await guardaTicketsResueltos.json();
+        const guardaTicketsResueltos = await EnlaceApi2.json();
 
         setDades({
-          ticketsPendientes: pendientes,
-          ticketsResueltos: resueltos
+          ticketsPendientes: guardaTicketspendientes,
+          ticketsResueltos: guardaTicketsResueltos
         });
         //hacemos un set de los datos recibidos del api rest en la lista que previamente estaba vacia.
 
@@ -46,13 +46,13 @@ export const GlobalProvider = ({ children }) => {
       }
     };
 
-    fetchData();
-    // Llamamos a la funcion fetchData para entregar los datos
+    funcionFetch();
+    // Llamamos a la funcion funcionFetch para entregar los datos
   }, []);
   
 
   return (
-    <GlobalContext.Provider value={{ dades }}>
+    <GlobalContext.Provider value={{ array }}>
       {children}
     </GlobalContext.Provider>
   );
