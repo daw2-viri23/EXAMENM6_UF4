@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 
-//creamos el contexto contexto.
+//creamos el contexto.
 export const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
@@ -38,7 +38,7 @@ export const GlobalProvider = ({ children }) => {
 
       } catch (error) {
         console.error('Error');
-        // si algo fala con el catch mostramos por consola que ha sucedido un error.
+        // si algo falla con el catch mostramos por consola que ha sucedido un error.
       }
     };
     funcionFetch();
