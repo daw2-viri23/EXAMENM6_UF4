@@ -2,8 +2,13 @@ import React, { createContext, useState, useEffect } from 'react';
 
 
 //creamos el contexto contexto.
+export const GlobalContext = createContext();
+
+
+//creamos el contexto contexto.
 
 export const GlobalContext = createContext();
+
 
 
 export const GlobalProvider = ({ children }) => {
@@ -17,7 +22,7 @@ export const GlobalProvider = ({ children }) => {
 
   useEffect(() => {
 
-    
+
     const funcionFetch = async () => {
       // Definimos una función funcionFetch que obtendrá datos desde internet.
       
@@ -25,11 +30,21 @@ export const GlobalProvider = ({ children }) => {
         const EnlaceApi1 = await fetch('https://json-server-vercel-examenm6.vercel.app/ticketsPendientes');
         // fetch es una función que obtiene datos desde una URL de la api rest subida al vercel previamente, usamos un await para esperar a q se reciban los datos para continuar
 
-        
+
         const guardaTicketspendientes = await EnlaceApi1.json();
         // convertimos el EnlaceApi1 en un objeto de JS igual se hace con guardaTicketsResueltos
 
         const EnlaceApi2 = await fetch('https://json-server-vercel-examenm6.vercel.app/ticketsResueltos');
+
+        const guardaTicketsResueltos = await EnlaceApi2.json();
+
+        // Ordenar los tickets por fecha de más antiguo a más nuevo
+        const ticketsPendientesOrdenados = guardaTicketspendientes.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+        const ticketsResueltosOrdenados = guardaTicketsResueltos.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+
+        setDades({
+          ticketsPendientes: ticketsPendientesOrdenados,
+          ticketsResueltos: ticketsResueltosOrdenados
 
         
         const guardaTicketsResueltos = await EnlaceApi2.json();
@@ -37,6 +52,7 @@ export const GlobalProvider = ({ children }) => {
         setDades({
           ticketsPendientes: guardaTicketspendientes,
           ticketsResueltos: guardaTicketsResueltos
+
         });
         //hacemos un set de los datos recibidos del api rest en la lista que previamente estaba vacia.
 
@@ -58,6 +74,4 @@ export const GlobalProvider = ({ children }) => {
   );
 
 };
-
-
 

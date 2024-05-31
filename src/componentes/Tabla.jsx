@@ -5,13 +5,7 @@ import { Button, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Input
 
 const Tabla = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [ticket, setTicket] = useState({
-
-  });
-
-
-
-
+  const [ticket, setTicket] = useState({});
 
   return (
     <>
@@ -28,52 +22,49 @@ const Tabla = () => {
 
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
         <ModalContent>
-        
-            <>
-              <ModalHeader className="flex flex-col gap-1">Añadir Ticket</ModalHeader>
-              <ModalBody>
-                <Input
-                  autoFocus
-                  label="Código"
-                  placeholder="Introduce el código"
-                />
-                <Input
-                  label="Fecha"
-                  placeholder="Introduce la fecha"
-                  type="date"
-
-                />
-                <Input
-                  label="Aula"
-                  placeholder="Introduce el aula"
-                />
-                <Input
-                  label="Grupo"
-                  placeholder="Introduce el grupo"
-                />
-                <Input
-                  label="Ordenador"
-                  placeholder="Introduce el ordenador"
-                />
-                <Input
-                  label="Descripción"
-                  placeholder="Introduce la descripción"
-                />
-                <Input
-                  label="Alumno"
-                  placeholder="Introduce el nombre del alumno"
-                  
-                />
-              </ModalBody>
-              <ModalFooter>
-                <Button color="danger" >
-                  Cerrar
-                </Button>
-                <Button color="primary" >
-                  Añadir Ticket
-                </Button>
-              </ModalFooter>
-            </>
+          <>
+            <ModalHeader className="flex flex-col gap-1">Añadir Ticket</ModalHeader>
+            <ModalBody>
+              <Input
+                autoFocus
+                label="Código"
+                placeholder="Introduce el código"
+              />
+              <Input
+                label="Fecha"
+                placeholder="Introduce la fecha"
+                type="date"
+              />
+              <Input
+                label="Aula"
+                placeholder="Introduce el aula"
+              />
+              <Input
+                label="Grupo"
+                placeholder="Introduce el grupo"
+              />
+              <Input
+                label="Ordenador"
+                placeholder="Introduce el ordenador"
+              />
+              <Input
+                label="Descripción"
+                placeholder="Introduce la descripción"
+              />
+              <Input
+                label="Alumno"
+                placeholder="Introduce el nombre del alumno"
+              />
+            </ModalBody>
+            <ModalFooter>
+              <Button color="danger" onPress={() => onOpenChange(false)}>
+                Cerrar
+              </Button>
+              <Button color="primary" onPress={() => console.log(ticket)}>
+                Añadir Ticket
+              </Button>
+            </ModalFooter>
+          </>
         </ModalContent>
       </Modal>
     </>
