@@ -10,14 +10,14 @@ export const GlobalProvider = ({ children }) => {
 
   // Cargar los datos desde el enlace proporcionado al montar el componente
   useEffect(() => {
-    fetch('https://json-server-vercel-lemon-ten.vercel.app/historias')
+    fetch('https://json-server-vercel-examen.vercel.app/historias')
       .then(response => response.json())
       .then(data => setHistorias(data))
       .catch(error => console.error('Error al cargar las historias:', error));
   }, []);
 
   const updateHistoria = (updatedHistoria) => {
-    fetch(`https://json-server-vercel-lemon-ten.vercel.app/historias/${updatedHistoria.id}`, {
+    fetch(`https://json-server-vercel-examen.vercel.app/historias/${updatedHistoria.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const addHistoria = (newHistoria) => {
-    fetch('https://json-server-vercel-lemon-ten.vercel.app/historias', {
+    fetch('https://json-server-vercel-examen.vercel.app/historias', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const deleteHistoria = (id) => {
-    fetch(`https://json-server-vercel-lemon-ten.vercel.app/historias/${id}`, {
+    fetch(`https://json-server-vercel-examen.vercel.app/historias/${id}`, {
       method: 'DELETE',
     })
       .then(() => {
@@ -70,4 +70,10 @@ export const GlobalProvider = ({ children }) => {
 };
 
 // Hook personalizado para utilizar el contexto global
-export const useGlobalContext = () => useContext(GlobalContext);
+export const useGlobalContext = () => {
+  const context = useContext(GlobalContext);
+  if (!context) {
+    throw new Error("useGlobalContext must be used within a GlobalProvider");
+  }
+  return context;
+};

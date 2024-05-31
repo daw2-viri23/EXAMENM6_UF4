@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, CardHeader, CardBody, CardFooter, Image, Button, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Input, useDisclosure } from "@nextui-org/react";
 import { Trash, Pencil, CirclePlus } from 'lucide-react';
 import { useGlobalContext } from '../context/GlobalContext';
