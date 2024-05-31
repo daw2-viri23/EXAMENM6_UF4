@@ -5,7 +5,6 @@ import { GlobalProvider } from './context/GlobalContext';
 import Home from './vistas/Home';
 import Cards from './vistas/Cards';
 import Tabla from './vistas/Tabla';
-import Footer from './componentes/Footer';
 
 const App = () => {
   return (
@@ -21,7 +20,6 @@ const App = () => {
             </Routes>
           </div>
         </div>
-        <Footer></Footer>
       </Router>
     </GlobalProvider>
   );

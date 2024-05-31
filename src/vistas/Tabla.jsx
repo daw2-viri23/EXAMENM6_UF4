@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Tooltip, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Input, Button } from "@nextui-org/react";
-import { EditIcon } from "lucide-react";
-import { DeleteIcon } from "lucide-react";
-import { EyeIcon } from "lucide-react";
+import { EditIcon } from "./EditIcon";
+import { DeleteIcon } from "./DeleteIcon";
+import { EyeIcon } from "./EyeIcon";
 import { useGlobalContext } from "../context/GlobalContext";
 
 const columns = [
