@@ -3,10 +3,10 @@ import React, { createContext, useState, useEffect } from 'react';
 
 //creamos el contexto contexto.
 
-const GlobalContext = createContext();
+export const GlobalContext = createContext();
 
 
-const GlobalProvider = ({ children }) => {
+export const GlobalProvider = ({ children }) => {
   // GlobalProvider da los datos a los componentes "hijo"
 
   const [dades, setDades] = useState({
@@ -59,7 +59,5 @@ const GlobalProvider = ({ children }) => {
 
 };
 
-export { GlobalContext, GlobalProvider };
-// Exportamos GlobalContext y GlobalProvider para que puedan ser utilizados en otros archivos.
 
 
